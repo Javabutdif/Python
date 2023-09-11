@@ -1,0 +1,24 @@
+
+# Pyramid
+
+n = 1 
+
+while True:
+    num = int(input("Input: "))
+    
+    if num > 0 and num <= 15:
+        
+        for i in range(1,num):
+            for j in range(1,num):
+                if j <= num and n <=num:
+                    print(n,end=" ")
+                    j += 1
+                    n+= 1
+            num -= 1
+            n = i
+            print("")
+            n += 1
+        
+    else:
+        break
+    
