@@ -54,12 +54,14 @@ def main()-> None:
 	for i in range(0, (len(matrixA)+len(matrixB))):
 		if n < len(matrixA) and n < len(matrixB) :
 			for j in range (0,3):
-				if n < 3 :
-					number += (matrixA[n] * matrixB[n*3])
+				if i < 3 :
+					number += (matrixA[j] * matrixB[j*3])
+				elif i > 3 and i < 6:
+					number += (matrixA[j] * matrixB[j+4])
 					
 				n+= 1
 			output += str(number) + " "
-			
+			number = 0
 			
 	
 	print(output)
