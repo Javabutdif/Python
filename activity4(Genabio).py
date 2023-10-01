@@ -46,7 +46,17 @@ def display() -> None:
 def addStud() -> None:
     system("cls")
     print("-----ADD STUDENT-----")
-    idNum = input("Enter ID Number: ")
+    studentDict = readFile()
+    idNum:str = ""
+    while True:
+        idNum = input("Enter ID Number: ")
+        if idNum in studentDict:
+            idNum = ""
+            print("ID Number exist!")
+        else:
+            break
+
+
     lastName = input("Enter Last Name: ")
     firstName = input("Enter First Name: ")
     course = input("Enter Course: ")
@@ -55,6 +65,7 @@ def addStud() -> None:
     with open('students.txt', 'a') as writer:
         writer.write("\n"+idNum+','+lastName+','+firstName+','+course+','+yearLevel)
         writer.close()
+
 
 
 
