@@ -97,8 +97,10 @@ def deleteStud() -> None:
     studentDict = readFile()
 
     if idNum in studentDict:
+        studentDisplay = studentDict[idNum]
+        print("Id#: " + studentDisplay.idNum + "\nLast Name: " + studentDisplay.lastName + "\nFirst Name: " + studentDisplay.firstName + "\nCourse: " + studentDisplay.course + "\nYear Level: " + studentDisplay.yearLevel)
         c = input("Are you really really sure you want to delete? [Y/N]: ")
-        if c == 'Y' or 'y':
+        if c == 'Y' or c == 'y':
             del studentDict[idNum]
             print("Student Deleted!")
 
