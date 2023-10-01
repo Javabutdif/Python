@@ -45,7 +45,7 @@ def display() -> None:
 
 def addStud() -> None:
     system("cls")
-    print("-----ADD STUDENT-----")
+    print("----------- Add Student -----------")
     studentDict = readFile()
     idNum:str = ""
     while True:
@@ -77,22 +77,25 @@ def addStud() -> None:
 
 def findStud() -> None:
     system("cls")
-    print("-----FIND STUDENT-----")
+    print("----------- Find Student -----------")
     idNum = input("Input ID Number to find Student (xxxx): ")
     studentDict = readFile()
 
     if idNum in studentDict:
         studentDisplay = studentDict[idNum]
+        print("----------------------")
         print("Student Found!")
+        print("----------------------")
         print("Id#: " + studentDisplay.idNum + "\nLast Name: " + studentDisplay.lastName + "\nFirst Name: " + studentDisplay.firstName + "\nCourse: " + studentDisplay.course + "\nYear Level: " + studentDisplay.yearLevel)
     else:
+    
         print("Student Not Found!")
 
     input("Press any key to continue!")
 
 def deleteStud() -> None:
     system("cls")
-    print("-----DELETE STUDENT-----")
+    print("----------- Delete Student -----------")
     idNum = input("Input ID Number to delete Student (xxxx): ")
     studentDict = readFile()
 
@@ -108,7 +111,7 @@ def deleteStud() -> None:
             with open('students.txt', 'w+') as writer:
                 for i in studentDict:
                     studentDisplay = studentDict[i]
-                    writer.write(studentDisplay.idNum + ',' + studentDisplay.lastName + ',' + studentDisplay.firstName + ',' + studentDisplay.course + ',' + studentDisplay.yearLevel+"\n")
+                    writer.write(studentDisplay.idNum + ',' + studentDisplay.lastName + ',' + studentDisplay.firstName + ',' + studentDisplay.course + ',' + studentDisplay.yearLevel)
                 writer.close()
 
     else:
@@ -119,7 +122,7 @@ def deleteStud() -> None:
 
 def updateStud() -> None:
     system("cls")
-    print("-----UPDATE STUDENT-----")
+    print("----------- Update Student -----------")
     idNum = input("Input ID Number to Update Student (xxxx): ")
     studentDict = readFile()
 
@@ -166,7 +169,7 @@ def updateStud() -> None:
         with open('students.txt', 'w+') as writer:
             for i in studentDict:
                 studentDisplay = studentDict[i]
-                writer.write(studentDisplay.idNum + ',' + studentDisplay.lastName + ',' + studentDisplay.firstName + ',' + studentDisplay.course + ',' + studentDisplay.yearLevel+"\n")
+                writer.write(studentDisplay.idNum + ',' + studentDisplay.lastName + ',' + studentDisplay.firstName + ',' + studentDisplay.course + ',' + studentDisplay.yearLevel)
             writer.close()
     else:
         print("Student Not Found!")
@@ -176,11 +179,11 @@ def updateStud() -> None:
 
 def displayStud() -> None:
     system("cls")
-    print("-----DISPLAY STUDENT-----")
+    print("----------- Display Student -----------")
     studentDict = readFile()
     for i in studentDict:
         studentDisplay = studentDict[i]
-        print("Id#: " + studentDisplay.idNum + "\nLast Name: " + studentDisplay.lastName + "\nFirst Name: " + studentDisplay.firstName + "\nCourse: " + studentDisplay.course + "\nYear Level: " + studentDisplay.yearLevel)
+        print("Id#: " + studentDisplay.idNum + "\nLast Name: " + studentDisplay.lastName + "\nFirst Name: " + studentDisplay.firstName + "\nCourse: " + studentDisplay.course + "\nYear Level: " + studentDisplay.yearLevel+"\n")
     input("Press any key to continue!")
 
 
