@@ -66,6 +66,8 @@ def addStud() -> None:
         writer.write("\n"+idNum+','+lastName+','+firstName+','+course+','+yearLevel)
         writer.close()
 
+    print("Student Added!")
+    input("Press any key to continue!")
 
 
 
@@ -86,6 +88,8 @@ def findStud() -> None:
     else:
         print("Student Not Found!")
 
+    input("Press any key to continue!")
+
 def deleteStud() -> None:
     system("cls")
     print("-----DELETE STUDENT-----")
@@ -93,18 +97,22 @@ def deleteStud() -> None:
     studentDict = readFile()
 
     if idNum in studentDict:
-        del studentDict[idNum]
-        print("Student Deleted!")
+        c = input("Are you really really sure you want to delete? [Y/N]: ")
+        if c == 'Y' or 'y':
+            del studentDict[idNum]
+            print("Student Deleted!")
 
 
-        with open('students.txt', 'w+') as writer:
-            for i in studentDict:
-                studentDisplay = studentDict[i]
-                writer.write(studentDisplay.idNum + ',' + studentDisplay.lastName + ',' + studentDisplay.firstName + ',' + studentDisplay.course + ',' + studentDisplay.yearLevel+"\n")
-            writer.close()
+            with open('students.txt', 'w+') as writer:
+                for i in studentDict:
+                    studentDisplay = studentDict[i]
+                    writer.write(studentDisplay.idNum + ',' + studentDisplay.lastName + ',' + studentDisplay.firstName + ',' + studentDisplay.course + ',' + studentDisplay.yearLevel+"\n")
+                writer.close()
 
     else:
         print("Student Not Found!")
+
+    input("Press any key to continue!")
 
 
 def updateStud() -> None:
@@ -130,8 +138,14 @@ def updateStud() -> None:
         [print(x) for x in menu]
         ch = int(input("Choice: "))
         if ch == 1:
-            newId = input("Input new ID: ")
-            studentDisplay.idNum = newId
+            while True:
+                newId = input("Input new ID: ")
+                if newId in studentDict:
+                    newId = ""
+                    print("ID Number Exist!")
+                else:
+                    studentDisplay.idNum = newId
+                    break
         elif ch == 2:
             newLast = input("Input new LastName: ")
             studentDisplay.lastName = newLast
@@ -152,7 +166,10 @@ def updateStud() -> None:
                 studentDisplay = studentDict[i]
                 writer.write(studentDisplay.idNum + ',' + studentDisplay.lastName + ',' + studentDisplay.firstName + ',' + studentDisplay.course + ',' + studentDisplay.yearLevel+"\n")
             writer.close()
+    else:
+        print("Student Not Found!")
 
+    input("Press any key to continue!")
 
 
 def displayStud() -> None:
@@ -162,7 +179,7 @@ def displayStud() -> None:
     for i in studentDict:
         studentDisplay = studentDict[i]
         print("Id#: " + studentDisplay.idNum + "\nLast Name: " + studentDisplay.lastName + "\nFirst Name: " + studentDisplay.firstName + "\nCourse: " + studentDisplay.course + "\nYear Level: " + studentDisplay.yearLevel)
-
+    input("Press any key to continue!")
 
 
 def end() -> None:
